@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CurrencyComboBox from './components/CurrencyComboBox'; // Ajusta la ruta según la estructura de carpetas de tu proyecto
-
+import ExchangeCard from './components/ExchangeCard'
 const currencies = {
   "USD": {
     "emoji": "\uD83C\uDDFA\uD83C\uDDF8",
@@ -95,18 +95,31 @@ const initialExchanges = [
 ]
 
 const App = () => {
-  const [selectedCurrency, setSelectedCurrency] = useState(null);
+  const [selectOriginCurrency, setSelectOriginCurrency] = useState(null);
+  const [selectDestinyCurrency, setSelectDestinyCurrency] = useState(null);
   const [exchanges, setExchanges] = useState(initialExchanges)
 
-  const handleSelectCurrency = (currency) => {
-    setSelectedCurrency(currency);
+  const handleSelectOriginCurrency = (currency) => {
+    setSelectOriginCurrency(currency);
+    // Puedes realizar acciones adicionales cuando se selecciona una moneda, si es necesario.
+  };
+  const handleSelectDestinyCurrency = (currency) => {
+    setSelectDestinyCurrency(currency);
     // Puedes realizar acciones adicionales cuando se selecciona una moneda, si es necesario.
   };
 
+  const onNewExchange = (newExchange) => {
+    setExchanges((currentExchanges) => [...currentExchanges, newExchange])
+  }
+
   return (
     <div>
-      <h1>Selected Currency: {selectedCurrency}</h1>
-      <CurrencyComboBox currencies={currencies} onSelectCurrency={handleSelectCurrency} />
+      <h1>Selected Currency: {selectOriginCurrency}</h1>
+      <h1>Currency Result: {selectDestinyCurrency}</h1>
+      <CurrencyComboBox currencies={currencies} onSelectCurrency={handleSelectOriginCurrency} />
+      <CurrencyComboBox currencies={currencies} onSelectCurrency={handleSelectDestinyCurrency} />
+      <CurrencyComboBox onNewExchange={onNewExchange} />
+      <ExchangeCard exchanges={exchanges} setExchanges={setExchanges} />
     </div>
   );
 };
