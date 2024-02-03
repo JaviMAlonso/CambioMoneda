@@ -6,16 +6,14 @@ const InsertExchange = ({ onAddExchange }) => {
     const [amount, setAmount] = useState('');
 
     const handleAddExchange = () => {
-        // Validar que los campos no estén vacíos y que sean válidos
+        // Para validar que los campos no estén vacíos y que sean válidos
         if (originCurrency && destinyCurrency && amount && !isNaN(parseFloat(amount))) {
-            // Crear un nuevo objeto de cambio de moneda
             const newExchange = {
                 originCurrency,
                 destinyCurrency,
                 amount: parseFloat(amount),
             };
-
-            // Llamar a la función proporcionada por el padre para agregar el nuevo cambio
+            // Llamar a la función para agregar el nuevo cambio
             onAddExchange(newExchange);
 
             // Limpiar los campos después de agregar
