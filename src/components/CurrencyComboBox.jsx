@@ -11,7 +11,7 @@ const CurrencyComboBox = ({ currencies, onSelectCurrency }) => {
 
   return (
     <div>
-      <label>Elige una moneda: </label>
+      <label>Select a Currency:</label>
       <select value={selectedCurrency} onChange={handleCurrencyChange}>
         {Object.keys(currencies).map((currencyCode) => (
           <option key={currencyCode} value={currencyCode}>
