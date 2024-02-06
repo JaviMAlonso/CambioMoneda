@@ -28,6 +28,39 @@
   display: flex;
 }
 
+.patata {
+
+  align-items: center;
+  justify-content: space-between;
+  width: 66%;
+}
+
+#amount {
+  margin-left: 10px;
+  width: 50px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.boton {
+  padding: 20px;
+  background-color: orange;
+  border-radius: 10px;
+  font-size: large;
+  border-color: black;
+}
+
+.boton:hover {
+  padding: 20px;
+  background-color: rgb(220, 143, 0);
+  border-radius: 10px;
+  border-color: black;
+}
+
+.padding {
+  padding: 10px;
+}
+
 h2 {
   width: 30%;
   padding-left: 10px;

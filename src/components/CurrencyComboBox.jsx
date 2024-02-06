@@ -1,18 +1,41 @@
 import React, { useState } from 'react'
 
 const CurrencyComboBox = ({ currencies, onSelectCurrency, label }) => {
-  const [selectedCurrency, setSelectedCurrency] = useState(null)
-  const [showOptions, setShowOptions] = useState(false)
+  const [selectedCurrency, setSelectedCurrency] = useState(null);
+  const [showOptions, setShowOptions] = useState(false);
 
   const handleCurrencyClick = (currency) => {
-    setSelectedCurrency(currency)
-    onSelectCurrency(currency)
-    setShowOptions(false)
-  }
+    setSelectedCurrency(currency);
+    onSelectCurrency(currency);
+    setShowOptions(false);
+  };
 
   return (
     <div>
       <label>{label}</label>
+      <div
+        style={{
+          border: '1px solid #ccc',
+          padding: '5px',
+          width: '150px',
+          cursor: 'pointer',
+        }}
+        onClick={() => setShowOptions(!showOptions)}
+      >
+        {selectedCurrency ? (
+          <>
+            <img
+              src={`/img/flags/${currencies[selectedCurrency].flag}`}
+              alt={selectedCurrency}
+              style={{ marginRight: '5px', width: '25px', height: '18px' }}
+            />
+            {currencies[selectedCurrency].name}
+          </>
+        ) : (
+          'Select a Currency'
+        )}
+      </div>
+
       {showOptions && (
         <div
           style={{
@@ -43,7 +66,7 @@ const CurrencyComboBox = ({ currencies, onSelectCurrency, label }) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
 export default CurrencyComboBox
