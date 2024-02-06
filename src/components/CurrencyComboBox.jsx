@@ -1,26 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-const CurrencyComboBox = ({ currencies, onSelectCurrency }) => {
-  const [selectedCurrency, setSelectedCurrency] = useState(Object.keys(currencies)[0]);
+const CurrencyComboBox = ({ currencies, onSelectCurrency, label }) => {
+  const [selectedCurrency, setSelectedCurrency] = useState(null)
+  const [showOptions, setShowOptions] = useState(false)
 
-  const handleCurrencyChange = (event) => {
-    const currency = event.target.value;
-    setSelectedCurrency(currency);
-    onSelectCurrency(currency);
-  };
+  const handleCurrencyClick = (currency) => {
+    setSelectedCurrency(currency)
+    onSelectCurrency(currency)
+    setShowOptions(false)
+  }
 
   return (
     <div>
-      <label>Select a Currency:</label>
-      <select value={selectedCurrency} onChange={handleCurrencyChange}>
-        {Object.keys(currencies).map((currencyCode) => (
-          <option key={currencyCode} value={currencyCode}>
-            {`${currencies[currencyCode].emoji} ${currencies[currencyCode].name}`}
-          </option>
-        ))}
-      </select>
+      <label>{label}</label>
+      {showOptions && (
+        <div
+          style={{
+            border: '1px solid #ccc',
+            marginTop: '5px',
+            position: 'absolute',
+            zIndex: '1',
+            backgroundColor: '#fff',
+          }}
+        >
+          {Object.keys(currencies).map((currencyCode) => (
+            <div
+              key={currencyCode}
+              onClick={() => handleCurrencyClick(currencyCode)}
+              style={{
+                padding: '5px',
+                cursor: 'pointer',
+              }}
+            >
+              <img
+                src={`/img/flags/${currencies[currencyCode].flag}`}
+                alt={currencyCode}
+                style={{ marginRight: '5px', width: '25px', height: '18px' }}
+              />
+              {currencies[currencyCode].name}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
-  );
-};
+  )
+}
 
-export default CurrencyComboBox;
+export default CurrencyComboBox

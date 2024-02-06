@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import CurrencyComboBox from './components/CurrencyComboBox'; // Ajusta la ruta según la estructura de carpetas de tu proyecto
+import React, { useState } from 'react'
+import InsertExchange from './components/InsertExchange'
+import './App.css'
 
 const currencies = {
   "USD": {
@@ -95,27 +96,21 @@ const initialExchanges = [
 ]
 
 const App = () => {
-  const [selectedOriginCurrency, setSelectedOriginCurrency] = useState(null);
-  const [selectedDestinyCurrency, setSelectedDestinyCurrency] = useState(null);
   const [exchanges, setExchanges] = useState(initialExchanges)
 
-  const handleSelectOriginCurrency = (currency) => {
-    setSelectedOriginCurrency(currency);
-    // Puedes realizar acciones adicionales cuando se selecciona una moneda, si es necesario.
-  };
-  const handleSelectDestinyCurrency = (currency) => {
-    setSelectedDestinyCurrency(currency);
-    // Puedes realizar acciones adicionales cuando se selecciona una moneda, si es necesario.
-  };
+  const handleExchanges = (exchanges) => {
+    setExchanges(exchanges)
+  }
 
   return (
     <div>
-      <h1>Selected Origin Currency: {selectedOriginCurrency}</h1>
-      <CurrencyComboBox currencies={currencies} onSelectCurrency={handleSelectOriginCurrency} />
-      <h1>Selected Destiny Currency: {selectedDestinyCurrency}</h1>
-      <CurrencyComboBox currencies={currencies} onSelectCurrency={handleSelectDestinyCurrency} />
+      <div className='row'>
+        <img src="../img/ep_money.png" alt="" />
+        <InsertExchange></InsertExchange>
+        <button type="submit" onClick={handleExchanges(exchanges)}>Add</button>
+      </div>
     </div>
-  );
-};
+  )
+}
 
 export default App;
