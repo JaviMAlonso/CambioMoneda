@@ -23,7 +23,7 @@ export default function InsertExchange({ currencies, onNewExchange }) {
     const handleNewExchange = () => {
         const newExchange = {
             id: Date.now(),
-            codOrigin: originCurrency,
+            codOrigen: originCurrency,
             codDest: destinyCurrency,
             amount: parseFloat(amount),
         }
