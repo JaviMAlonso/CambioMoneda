@@ -1,9 +1,15 @@
 import React from 'react'
+import '../App.css'
 
 export default function ExchangeList({ exchanges, currencies, setExchanges }) {
+    exchanges.forEach(exchange => {
+        console.log(" Origen " + exchange.codOrigen)
+        console.log(" Destino " + exchange.codDest)
+    });
     // Calcular el resultado basado en los tipos de cambio
-    // const convert = (amount * exchangeRates[destinyCurrency] / exchangeRates[originCurrency]).toFixed(2)
+    // const convert = (amount * currencies[exchange.codDest].exchangeRate / currencies[exchange.codOrigen].exchangeRate).toFixed(2)
     //currencies.filter(currency => currency == exchange.originCurrency);
+    //{(exchange.amount * currencies[exchange.codDest].exchangeRate / currencies[exchange.codOrigen].exchangeRate).toFixed(2)}
     const handleDelete = (id) => {
         const newExhanges = exchanges.filter(exchange => exchange.id !== id);
         setExchanges(newExhanges)
@@ -15,13 +21,11 @@ export default function ExchangeList({ exchanges, currencies, setExchanges }) {
             <ul>
                 {exchanges.map((exchange) => (
                     <li key={exchange.id} className='d-flex'>
-                        <strong> Origen:</strong> {exchange.codOrigen}
-                        <img src={`/img/flags/${currencies[exchange.originCurrency]}`} alt={exchange.codOrigen} />,
-                        <strong> Amount:</strong> {exchange.amount},
-                        <img src="./img/flechas.png" alt="" />
-                        <strong> Destino:</strong> {exchange.codDest}
-                        <img src={`/img/flags/${currencies[exchange.destinyCurrency]}`} alt={exchange.codDest} />,
-                        <strong> Result:</strong> {exchange.result}
+                        <img className="banderas" src={`./img/flags/${currencies[exchange.codOrigen]}`} alt={exchange.codOrigen} />
+                        <strong>{exchange.amount}</strong>
+                        <img src="../img/flechas.png" alt="" />
+                        <img className="banderas" src={`./img/flags/${currencies[exchange.codDest]}`} alt={exchange.codDest} />
+                        <strong></strong>
                         <button onClick={() => handleDelete(exchange.id)} className="delete-button">Delete</button>
                     </li>
                 ))}

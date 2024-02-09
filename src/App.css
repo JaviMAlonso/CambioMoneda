@@ -28,8 +28,11 @@
   display: flex;
 }
 
-.patata {
+img.banderas {
+  width: 20px;
+}
 
+.patata {
   align-items: center;
   justify-content: space-between;
   width: 66%;
