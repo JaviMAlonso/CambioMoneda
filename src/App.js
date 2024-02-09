@@ -107,15 +107,15 @@ const initialExchanges = [
     id: 1002,
     codOrigen: "USD",
     codDest: "JPY",
-    amount: 2
+    amount: 3
   }
 ]
 
 const App = () => {
   const [exchanges, setExchanges] = useState(initialExchanges)
 
-  const handleExchanges = (exchanges) => {
-    setExchanges(exchanges)
+  const handleExchanges = (newExchange) => {
+    setExchanges(currentExchanges => [...currentExchanges, newExchange])
   }
 
   return (
@@ -128,7 +128,7 @@ const App = () => {
       </div>
       <div><InsertExchange onNewExchange={handleExchanges} currencies={currencies} /></div>
 
-      <ExchangeList exchanges={exchanges} />
+      <ExchangeList exchanges={exchanges} currencies={currencies} setExchanges={setExchanges} />
     </div>
   )
 }

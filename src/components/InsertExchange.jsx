@@ -6,8 +6,8 @@ export default function InsertExchange({ currencies, onNewExchange }) {
     //Use state => exchangeInput = amount, OriginCurrency, DestinyCurrency
     //on newExchange con las 3 cosas de aqui abajo se le pasa a App.js
 
-    const [originCurrency, setOriginCurrency] = useState('EUR')
-    const [destinyCurrency, setDestinyCurrency] = useState('USD')
+    const [originCurrency, setOriginCurrency] = useState('')
+    const [destinyCurrency, setDestinyCurrency] = useState('')
     const [amount, setAmount] = useState("")
 
     const handleSelectOriginCurrency = (currency) => {
@@ -21,25 +21,21 @@ export default function InsertExchange({ currencies, onNewExchange }) {
     }
 
     const handleNewExchange = () => {
-        if (originCurrency && destinyCurrency && amount) {
-            const newExchange = {
-                id: Date.now(),
-                originCurrency: originCurrency,
-                destCurrency: destinyCurrency,
-                amount: parseFloat(amount),
-            }
-            onNewExchange(newExchange)
-            setOriginCurrency('EUR')
-            setDestinyCurrency('USD')
-            setAmount('')
+        const newExchange = {
+            id: Date.now(),
+            originCurrency: originCurrency,
+            destCurrency: destinyCurrency,
+            amount: parseFloat(amount),
         }
+        onNewExchange(newExchange)
     }
+
     return (
         <div>
             <div className='row patata'>
                 <div className='padding'>
                     <label htmlFor="amount">Amount:</label>
-                    <input type="text" id="amount" onChange={handleSelectAmount} />
+                    <input type="text" id="amount" onChange={(e) => handleSelectAmount(e.target.value)} />
                 </div>
                 <div className='padding'>
                     <label htmlFor="originCurrency">Origin Currency:</label>
