@@ -119,14 +119,16 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div className='container'>
       <div className='row'>
         <img src="../img/ep_money.png" alt="" />
-        <div>
+        <div className='w-100'>
           <h1>Currency Exchanger</h1>
+          <div><InsertExchange onNewExchange={handleExchanges} currencies={currencies} /></div>
         </div>
+
       </div>
-      <div><InsertExchange onNewExchange={handleExchanges} currencies={currencies} /></div>
+
 
       <ExchangeList exchanges={exchanges} currencies={currencies} setExchanges={setExchanges} />
     </div>

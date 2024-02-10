@@ -29,13 +29,33 @@
 }
 
 img.banderas {
-  width: 20px;
+  width: 25px;
+}
+
+.w-100 {
+  width: 100%;
+
+}
+
+.col-3 p {
+  margin: 0 !important;
+}
+
+.container {
+  width: 90%;
+  padding: auto;
+  margin: auto;
+}
+
+h1.w-100 {
+  padding-bottom: 0;
+  margin-bottom: 0 !important;
 }
 
 .patata {
   align-items: center;
   justify-content: space-between;
-  width: 66%;
+  width: 100%;
 }
 
 #amount {
@@ -46,23 +66,72 @@ img.banderas {
 }
 
 .boton {
-  padding: 20px;
+  padding: 7px 20px;
   background-color: orange;
   border-radius: 10px;
   font-size: large;
-  border-color: black;
+  border-color: transparent;
+  color: white;
 }
 
 .boton:hover {
-  padding: 20px;
+  padding: 7px 20px;
   background-color: rgb(220, 143, 0);
   border-radius: 10px;
-  border-color: black;
+  font-size: large;
+  border-color: transparent;
+  color: white;
 }
 
 .padding {
   padding: 10px;
 }
+
+.d-flex {
+  display: flex;
+}
+
+.delete-button {
+  background-color: transparent;
+  color: #bda246;
+  border-color: transparent;
+  position: absolute;
+  top: 0;
+  right: 0px;
+  font-size: 20px;
+}
+
+.card {
+  background-color: #d3e09d;
+  padding: 30px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  position: relative;
+  border-radius: 10px;
+  box-sizing: border-box;
+  width: 49%;
+  justify-content: space-between;
+}
+
+.col-3 {
+  width: 32%;
+  display: inline;
+  justify-content: center;
+  /* Centra el contenido horizontalmente */
+  align-items: center;
+  /* Centra el contenido verticalmente */
+  text-align: center;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* .col-2 {
+  display: flex;
+  width: 49%;
+} */
 
 h2 {
   width: 30%;

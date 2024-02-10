@@ -15,21 +15,24 @@ export default function ExchangeList({ exchanges, currencies, setExchanges }) {
     }
 
     return (
-        <div>
-            <h2>Exchange List</h2>
-            <ul>
-                {exchanges.map((exchange) => (
-                    <li key={exchange.id} className='d-flex'>
-                        <img className="banderas" src={`./img/flags/${currencies[exchange.codOrigen].flag}`} alt={exchange.codOrigen} />
-                        <strong>{exchange.amount}</strong>
-                        <img src="../img/flechas.png" alt="" />
-                        <img className="banderas" src={`./img/flags/${currencies[exchange.codDest].flag}`} alt={exchange.codDest} />
-                        <strong>{(exchange.amount * currencies[exchange.codDest].exchangeRate / currencies[exchange.codOrigen].exchangeRate).toFixed(2)}</strong>
-                        <button onClick={() => handleDelete(exchange.id)} className="delete-button">Delete</button>
-                    </li>
-                ))}
+        <div className='row col-2 card-container'>
 
-            </ul>
+            {exchanges.map((exchange) => (
+                <div key={exchange.id} className='d-flex card'>
+                    <div className='col-3'>
+                        <img className="banderas" src={`./img/flags/${currencies[exchange.codOrigen].flag}`} alt={exchange.codOrigen} />
+                        <p>{exchange.amount} {exchange.codOrigen}</p>
+                    </div>
+                    <div className='col-3'>
+                        <img src="../img/flechas.png" alt="" />
+                    </div>
+                    <div className='col-3'>
+                        <img className="banderas" src={`./img/flags/${currencies[exchange.codDest].flag}`} alt={exchange.codDest} />
+                        <p>{(exchange.amount * currencies[exchange.codDest].exchangeRate / currencies[exchange.codOrigen].exchangeRate).toFixed(2)} {exchange.codDest}</p>
+                    </div>
+                    <button onClick={() => handleDelete(exchange.id)} className="delete-button">⌧</button>
+                </div>
+            ))}
         </div>
     )
 }
