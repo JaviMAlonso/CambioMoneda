@@ -120,7 +120,6 @@ const App = () => {
   //Los  handle se llaman asi por si otro tiene que tocar el codigo que lo entienda a la primera
   //pero es similar a una funcion de flecha como las de JS.
   const handleExchanges = (newExchange) => {
-
     // el setExchanges viene del const de arriba y se le dice que cree una variable(currentExchanges)
     // y que cada vez que se le llame llene esa variable consigo misma + un nuevo exchange, que es el que
     // le pasa el handle (es como hacer +=)

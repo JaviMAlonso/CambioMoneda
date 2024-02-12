@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import CurrencyComboBox from './CurrencyComboBox'
 import '../App.css'
 
-// Al crear la funcion gorda de exchangeList se le pasan los 2 parametros que le escibimos en el return de App.jsx 
+// Al crear la funcion gorda de exchangeList se le pasan los 2 parametros que le escibimos en el return de App.js 
 export default function InsertExchange({ currencies, onNewExchange }) {
 
     //on newExchange con las 3 cosas de aqui abajo se le pasa a App.js
@@ -33,7 +33,7 @@ export default function InsertExchange({ currencies, onNewExchange }) {
         }
         onNewExchange(newExchange)
     }
-
+    //
     //return con CSS para parecerse a lo de Figma
     return (
         <div>

@@ -11,18 +11,17 @@ export default function ExchangeList({ exchanges, currencies, setExchanges }) {
 
     // handle que se encarga de borrar por id
     const handleDelete = (id) => {
-        // se declara una variable con nombre cualquiera y lo de filter no se como va al 100% 
+        // se declara una variable con nombre cualquiera y lo de filter no se como va al 100%
         // creo que es como un forEach pero lo que le pongas detrás de la flecha actua como un if y si coincide, 
         // lo quita del array
-        const newExhanges = exchanges.filter(exchange => exchange.id !== id);
+        const newExhanges = exchanges.filter(exchange => exchange.id !== id)
         // se le dice a newExchanges que ahora ha perdido un hijo porq si y q lo cambie o se le parten las piernas
         setExchanges(newExhanges)
     }
-
     // return con puro CSS para que se vea parecido a Figma
+    // el exchange map funciona similar a un forEach
     return (
         <div className='row col-2 card-container'>
-
             {exchanges.map((exchange) => (
                 <div key={exchange.id} className='d-flex card'>
                     <div className='col-3'>
