@@ -112,12 +112,26 @@ const initialExchanges = [
 ]
 
 const App = () => {
+  //Esta línea de código crea un estado llamado exchanges con un valor inicial definido por 
+  //initialExchanges, y una función llamada setExchanges que se utiliza para actualizar ese estado.
+  // 1º nombre = variable nueva, 2º nombre = funcion relacionada a la varible anterior
   const [exchanges, setExchanges] = useState(initialExchanges)
 
+  //Los  handle se llaman asi por si otro tiene que tocar el codigo que lo entienda a la primera
+  //pero es similar a una funcion de flecha como las de JS.
   const handleExchanges = (newExchange) => {
+
+    // el setExchanges viene del const de arriba y se le dice que cree una variable(currentExchanges)
+    // y que cada vez que se le llame llene esa variable consigo misma + un nuevo exchange, que es el que
+    // le pasa el handle (es como hacer +=)
     setExchanges(currentExchanges => [...currentExchanges, newExchange])
   }
 
+  //el return es puro CSS para que se parezca a lo de Figma y llamar a los componentes "importantes"
+  // que son el insert y el list/card
+
+  //Los nombres en azul dentro de cada componente son "variables" que va a necesitar ese componente
+  // en sus funciones
   return (
     <div className='container'>
       <div className='row'>
@@ -126,13 +140,9 @@ const App = () => {
           <h1>Currency Exchanger</h1>
           <div><InsertExchange onNewExchange={handleExchanges} currencies={currencies} /></div>
         </div>
-
       </div>
-
-
       <ExchangeList exchanges={exchanges} currencies={currencies} setExchanges={setExchanges} />
     </div>
   )
 }
-
 export default App;
